@@ -1,0 +1,5 @@
+storeFile=amandeep_patient.keystore
+storePassword=amandeeppatient123##
+storeType=keystore
+keyAlias=amandeep_patient
+keyPassword=amandeeppatient123##

@@ -1,0 +1,91 @@
+<ion-app>
+  <ion-menu side="start" menuId="first" contentId="main" swipe-gesture="false">
+    <ion-header>
+      <ion-menu-toggle auto-hide="false">
+        <ion-toolbar color="danger">
+          <ion-row class="header">
+            <ion-col size="3">
+              <img
+                class="user-img"
+                src="{{ utility.image }}"
+                *ngIf="utility.image"
+              />
+            </ion-col>
+            <ion-col size="6">
+              <ion-label class="user" style="text-transform: capitalize">{{
+                utility.user?.user_name
+              }}</ion-label>
+              <p
+                class="user"
+                style="font-size: 12px; margin-top: 3px"
+                *ngIf="utility.user?.phone_number != ''"
+              >
+                {{ utility.user?.phone_number }}
+              </p>
+              <p class="user" style="font-size: 12px; margin-top: 3px">
+                {{ utility.user?.email }}
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-toolbar>
+      </ion-menu-toggle>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <div *ngFor="let item of menu; let i = index">
+          <ion-item
+            no-padding
+            lines="full"
+            (click)="chooseOption(item.title)"
+            routerDirection="root"
+            [routerLink]="[item.url]"
+            detail="false"
+            class="lower-line"
+          >
+            <ion-icon
+              slot="start"
+              [ios]="item.icon"
+              [name]="item.icon"
+              mode="ios"
+            ></ion-icon>
+
+            <ion-label (click)="showSubmenu(i)" style="font-size: 15px">{{
+              item.title
+            }}</ion-label>
+            <ion-icon
+              (click)="showSubmenu(i)"
+              slot="end"
+              [ios]="item.sub_menu_icon"
+              [name]="item.sub_menu_icon"
+              mode="ios"
+            ></ion-icon>
+          </ion-item>
+
+          <div *ngIf="item.show_submenu">
+            <ion-menu-toggle auto-hide="false" no-padding>
+              <ion-item
+                (click)="chooseOption(submenu.title)"
+                routerDirection="root"
+                [routerLink]="[submenu.url]"
+                detail="false"
+                style="margin-left: 25px"
+                *ngFor="let submenu of item.submenu; let j = index"
+              >
+                <ion-icon
+                  slot="start"
+                  [ios]="submenu.icon"
+                  [name]="submenu.icon"
+                  mode="ios"
+                ></ion-icon>
+                <ion-label style="font-size: 15px">{{
+                  submenu.title
+                }}</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </div>
+        </div>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

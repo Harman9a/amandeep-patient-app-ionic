@@ -1,0 +1,203 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="title"></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col size="12"> </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" class="logo">
+      <img src="assets/imgs/logo.png" />
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" class="logo-text">
+      <h6>----------&nbsp;&nbsp;SIGN UP&nbsp;&nbsp;----------</h6>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="12" class="phone-number">
+      <ion-label>Name<span class="required-field">*</span></ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="lower-bottom">
+    <ion-col size="1" class="phone-number call-icon">
+      <ion-icon name="person-outline" style="color: #3c3737"></ion-icon>
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-input
+        placeholder="Enter your name"
+        type="text"
+        [(ngModel)]="name"
+        (keypress)="onKeyPress($event)"
+        pattern="/^[a-zA-Z\s]*$/"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" class="phone-number">
+      <ion-label>Phone Number<span class="required-field">*</span></ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="lower-bottom">
+    <ion-col size="1" class="phone-number call-icon">
+      <ion-icon name="call-outline" style="font-size: 15px"></ion-icon>
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-input
+        [maxlength]="10"
+        type="tel"
+        placeholder="Contact Number"
+        (keypress)="onKeyPressNum($event)"
+        [(ngModel)]="mobile_no"
+      ></ion-input>
+    </ion-col>
+    <!-- <ion-col size="1" class="phone-number call-icon">
+      <ion-icon name="person-outline" style=" color: #3C3737;"></ion-icon>
+    </ion-col>
+    <ion-col style="margin-left: -18px;margin-top: 2px;">
+      <ion-input [maxlength]="10" type="tel" placeholder="Contact Number" (keypress)="onKeyPressNum($event)"
+        [(ngModel)]="mobile_no"></ion-input>
+
+    </ion-col> -->
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" class="phone-number">
+      <ion-label>Country<span class="required-field">*</span></ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="lower-bottom">
+    <ion-col size="1" class="phone-number call-icon" style="margin-top: 6px">
+      <ion-icon name="globe-outline" style="font-size: 15px"></ion-icon>
+    </ion-col>
+
+    <ion-col size="5">
+      <ion-select
+        (ionChange)="pickCountry($event)"
+        placeholder="Country"
+        okText="Ok"
+        cancelText="Cancel"
+      >
+        <ion-select-option
+          value="{{country_name.country_name}}"
+          *ngFor="let country_name of country_name"
+        >
+          {{country_name.country_name}} ({{country_name.dialling_code}})
+        </ion-select-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" class="phone-number">
+      <ion-label>Email Address<span class="required-field">*</span></ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="lower-bottom">
+    <ion-col size="1" class="phone-number call-icon">
+      <ion-icon name="mail-outline" style="color: #3c3737"></ion-icon>
+    </ion-col>
+
+    <ion-col size="8">
+      <ion-input
+        type="email"
+        placeholder="Enter your email"
+        [(ngModel)]="email_id"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" class="phone-number">
+      <ion-label>Password<span class="required-field">*</span></ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="lower-bottom" style="margin: 0">
+    <!-- <ion-row class="lower-bottom">
+    <ion-col size="1" class="phone-number call-icon">
+      <ion-icon name="lock-closed-outline" style="color: #3c3737"></ion-icon>
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-input
+        minlength="8"
+        maxlength="16"
+        type="password"
+        placeholder="Enter your password"
+        [(ngModel)]="password"
+      >
+      </ion-input>
+    </ion-col> -->
+    <ion-col size="12">
+      <ion-item>
+        <!-- <ion-input type="password" placeholder="Enter Password" style="--padding-top: 7px;" [(ngModel)]="password">
+      </ion-input>
+      <ion-icon name="eye-outline"></ion-icon> -->
+        <ion-input
+          [type]="showPassword == true ? 'text' : 'password'"
+          placeholder="Enter Password"
+          style="--padding-top: 7px"
+          [(ngModel)]="password"
+        >
+        </ion-input>
+        <ion-button
+          slot="end"
+          fill="clear"
+          class="seeClient"
+          (click)="toggleShowPassword()"
+        >
+          <ion-icon
+            *ngIf="showPassword"
+            name="eye-outline"
+            color="danger"
+            class="iconEye"
+          ></ion-icon>
+          <ion-icon
+            *ngIf="!showPassword"
+            name="eye-off-outline"
+            color="danger"
+            class="iconEye"
+          ></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div style="display: flex; align-items: center; padding: 1rem 10px">
+        <ion-checkbox color="primary" [(ngModel)]="termsBox"></ion-checkbox>
+        <ion-label
+          style="font-size: 14px; margin-left: 5px; cursor: pointer"
+          (click)="openTerms()"
+          >Terms & Conditions & Privacy Policy</ion-label
+        >
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row style="padding: 40px">
+    <ion-col>
+      <ion-button
+        style="
+          --background: linear-gradient(to right, #c23f3a, #e80c0a);
+          --padding-bottom: 25px;
+          --padding-top: 25px;
+          --background-activated: #e80c0a;
+        "
+        shape="round"
+        expand="full"
+        (click)="signup()"
+        class="ion-activatable ripple-parent"
+        >Sign Up</ion-button
+      >
+    </ion-col>
+  </ion-row>
+</ion-content>

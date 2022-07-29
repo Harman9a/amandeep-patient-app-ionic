@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1098375762923",
+    "project_id": "amandeep-hospital-da0aa",
+    "storage_bucket": "amandeep-hospital-da0aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098375762923:android:86b2d615dcedeed31bbfae",
+        "android_client_info": {
+          "package_name": "amandeephospital.patientapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1098375762923-cg0tccq9urm15vta13427b6u1htqo849.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "amandeephospital.patientapp",
+            "certificate_hash": "5d016c8a514d8f968a2b200b9217a6db70f99709"
+          }
+        },
+        {
+          "client_id": "1098375762923-dsb1adr0bhs7jsk0lql73o911pgl283v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2WiCUcjt6b_5e6sOd7Hn0zL42yaqNmyc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1098375762923-dsb1adr0bhs7jsk0lql73o911pgl283v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
